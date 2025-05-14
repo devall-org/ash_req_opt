@@ -33,7 +33,7 @@ Add `ash_req_opt` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ash_req_opt, "~> 0.1.0"}
+    {:ash_req_opt, "~> 0.2.0"}
   ]
 end
 ```
