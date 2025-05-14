@@ -1,6 +1,6 @@
 # AshReqOpt
 
-Concise and explicit DSL for attributes and relationships in Ash resources.
+Shortcut DSL for attributes and relationships in Ash resources.
 
 ### For attribute
 
