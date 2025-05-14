@@ -13,13 +13,11 @@ defmodule AshReqOptTest do
       extensions: [AshReqOpt]
 
     ets do
-      private? true
+      private?(true)
     end
 
     attributes do
-      uuid_primary_key :id
-      req :email, :string
-      opt :name, :string
+      uuid_primary_key(:id)
     end
   end
 
@@ -30,16 +28,16 @@ defmodule AshReqOptTest do
       extensions: [AshReqOpt]
 
     ets do
-      private? true
+      private?(true)
     end
 
     attributes do
-      uuid_primary_key :id
+      uuid_primary_key(:id)
     end
 
     relationships do
-      req_belongs_to :author, User
-      opt_belongs_to :reviewer, User
+      req_belongs_to(:author, User)
+      opt_belongs_to(:reviewer, User)
     end
   end
 
@@ -47,8 +45,8 @@ defmodule AshReqOptTest do
     use Ash.Domain
 
     resources do
-      resource User
-      resource Post
+      resource(User)
+      resource(Post)
     end
   end
 
