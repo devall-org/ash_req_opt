@@ -3,12 +3,7 @@ defmodule AshReqOpt do
     @schema Ash.Resource.Attribute.attribute_schema()
             |> Keyword.reject(fn
               {:allow_nil?, _} -> true
-              {:always_select?, _} -> true
               _ -> false
-            end)
-            |> Enum.map(fn
-              {:public?, opts} -> {:public?, opts |> Keyword.replace!(:default, true)}
-              other -> other
             end)
 
     # Based on Ash's lib/ash/resource/dsl.ex
@@ -75,10 +70,6 @@ defmodule AshReqOpt do
             |> Keyword.reject(fn
               {:allow_nil?, _} -> true
               _ -> false
-            end)
-            |> Enum.map(fn
-              {:public?, opts} -> {:public?, opts |> Keyword.replace!(:default, true)}
-              other -> other
             end)
 
     # Based on Ash's lib/ash/resource/dsl.ex
