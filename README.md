@@ -4,14 +4,26 @@ An extension library for the Ash framework that provides clearer ways to define 
 
 ## Features
 
-- Define required/optional attributes using `req` and `opt` macros
-  - Instead of `attribute :email, :string, allow_nil?: false`, use `req :email, :string`
-  - Instead of `attribute :name, :string, allow_nil?: true`, use `opt :name, :string`
-  - You can still use the original `attribute` macro if you prefer
-- Define required/optional relationships using `req_belongs_to` and `opt_belongs_to` macros
-  - Instead of `belongs_to :company, Company, allow_nil?: false`, use `req_belongs_to :company, Company`
-  - Instead of `belongs_to :manager, User, allow_nil?: true`, use `opt_belongs_to :manager, User`
-  - You can still use the original `belongs_to` macro if you prefer
+- Define required attributes and relationships:
+  - Public:
+    - `req :email, :string` instead of `attribute :email, :string, allow_nil?: false, public?: true`
+    - `req_belongs_to :company, Company` instead of `belongs_to :company, Company, allow_nil?: false, public?: true`
+  - Private:
+    - `req_prv :password_hash, :string` instead of `attribute :password_hash, :string, allow_nil?: false, public?: false`
+    - `req_prv_belongs_to :created_by, User` instead of `belongs_to :created_by, User, allow_nil?: false, public?: false`
+
+- Define optional attributes and relationships:
+  - Public:
+    - `opt :name, :string` instead of `attribute :name, :string, allow_nil?: true, public?: true`
+    - `opt_belongs_to :manager, User` instead of `belongs_to :manager, User, allow_nil?: true, public?: true`
+  - Private:
+    - `opt_prv :last_login_at, :utc_datetime` instead of `attribute :last_login_at, :utc_datetime, allow_nil?: true, public?: false`
+    - `opt_prv_belongs_to :updated_by, User` instead of `belongs_to :updated_by, User, allow_nil?: true, public?: false`
+
+- Original macros still work:
+  - `attribute :nickname, :string, allow_nil?: true`
+  - `belongs_to :department, Department, allow_nil?: true`
+
 - Extends Ash resource DSL for more explicit intent
 
 ## Installation
@@ -30,20 +42,34 @@ end
 
 ```elixir
 defmodule MyApp.User do
-  use Ash.Resource,
-    extensions: [AshReqOpt]
+  use Ash.Resource, extensions: [AshReqOpt]
 
   attributes do
     uuid_primary_key :id
-    req :email, :string    # Required attribute (equivalent to allow_nil?: false)
-    opt :name, :string     # Optional attribute (equivalent to allow_nil?: true)
-    attribute :nickname, :string, allow_nil?: true  # Original attribute macro still works
+
+    # Required attributes
+    req :email, :string    # allow_nil?: false, public?: true
+    req_prv :password_hash, :string    # allow_nil?: false, public?: false
+
+    # Optional attributes
+    opt :name, :string     # allow_nil?: true, public?: true
+    opt_prv :last_login_at, :utc_datetime  # allow_nil?: true, public?: false
+
+    # Original attribute macro still works
+    attribute :nickname, :string, allow_nil?: true
   end
 
   relationships do
-    req_belongs_to :company, Company    # Required relationship (equivalent to allow_nil?: false)
-    opt_belongs_to :manager, User       # Optional relationship (equivalent to allow_nil?: true)
-    belongs_to :department, Department, allow_nil?: true  # Original belongs_to macro still works
+    # Required relationships
+    req_belongs_to :company, Company    # allow_nil?: false, public?: true
+    req_prv_belongs_to :created_by, User    # allow_nil?: false, public?: false
+
+    # Optional relationships
+    opt_belongs_to :manager, User       # allow_nil?: true, public?: true
+    opt_prv_belongs_to :updated_by, User    # allow_nil?: true, public?: false
+
+    # Original belongs_to macro still works
+    belongs_to :department, Department, allow_nil?: true
   end
 end
 ```
