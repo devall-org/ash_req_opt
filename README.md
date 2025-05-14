@@ -7,7 +7,7 @@ Concise DSL for attributes and relationships in Ash resources.
 ### Attribute DSL
 
 | DSL | allow_nil? | public? |
-|-----|------------|---------|
+|:---:|:----------:|:-------:|
 | `req` | false | true |
 | `req_prv` | false | false |
 | `opt` | true | true |
@@ -16,7 +16,7 @@ Concise DSL for attributes and relationships in Ash resources.
 ### Relationship DSL
 
 | DSL | allow_nil? | public? |
-|-----|------------|---------|
+|:---:|:----------:|:-------:|
 | `req_belongs_to` | false | true |
 | `req_prv_belongs_to` | false | false |
 | `opt_belongs_to` | true | true |
