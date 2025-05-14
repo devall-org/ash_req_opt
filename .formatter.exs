@@ -1,4 +1,61 @@
-# Used by "mix format"
+spark_locals_without_parens = [
+  allow_forbidden_field?: 1,
+  always_select?: 1,
+  attribute_public?: 1,
+  attribute_type: 1,
+  attribute_writable?: 1,
+  authorize_read_with: 1,
+  constraints: 1,
+  default: 1,
+  default_sort: 1,
+  define_attribute?: 1,
+  description: 1,
+  destination_attribute: 1,
+  domain: 1,
+  filterable?: 1,
+  generated?: 1,
+  match_other_defaults?: 1,
+  not_found_message: 1,
+  opt: 2,
+  opt: 3,
+  opt_belongs_to: 2,
+  opt_belongs_to: 3,
+  opt_prv: 2,
+  opt_prv: 3,
+  opt_prv_belongs_to: 2,
+  opt_prv_belongs_to: 3,
+  primary_key?: 1,
+  read_action: 1,
+  relationship_context: 1,
+  req: 2,
+  req: 3,
+  req_belongs_to: 2,
+  req_belongs_to: 3,
+  req_prv: 2,
+  req_prv: 3,
+  req_prv_belongs_to: 2,
+  req_prv_belongs_to: 3,
+  select_by_default?: 1,
+  sensitive?: 1,
+  sort: 1,
+  sortable?: 1,
+  source: 1,
+  source_attribute: 1,
+  update_default: 1,
+  validate_destination_attribute?: 1,
+  violation_message: 1,
+  writable?: 1
+]
+
 [
-  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
+  import_deps: [:spark, :reactor, :ash],
+  inputs: [
+    "{mix,.formatter}.exs",
+    "{config,lib,test}/**/*.{ex,exs}"
+  ],
+  plugins: [Spark.Formatter],
+  locals_without_parens: spark_locals_without_parens,
+  export: [
+    locals_without_parens: spark_locals_without_parens
+  ]
 ]
