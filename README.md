@@ -1,22 +1,22 @@
 # AshReqOpt
 
-Concise DSL for attributes and relationships in Ash resources.
+Concise and explicit DSL for attributes and relationships in Ash resources.
 
-## DSL
-
-### Attribute DSL
+### For attribute
 
 | DSL | allow_nil? | public? |
 |:---:|:----------:|:-------:|
+| `attribute` (Ash) | true | false |
 | `req` | false | true |
 | `req_prv` | false | false |
 | `opt` | true | true |
 | `opt_prv` | true | false |
 
-### Relationship DSL
+### For belongs_to
 
 | DSL | allow_nil? | public? |
 |:---:|:----------:|:-------:|
+| `belongs_to` (Ash) | true | false |
 | `req_belongs_to` | false | true |
 | `req_prv_belongs_to` | false | false |
 | `opt_belongs_to` | true | true |
