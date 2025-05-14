@@ -2,7 +2,6 @@
 
 Concise DSL for attributes and relationships in Ash resources.
 
-## DSL
 
 ### Attribute DSL
 
