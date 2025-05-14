@@ -9,7 +9,7 @@ defmodule AshReqOpt.MixProject do
       consolidate_protocols: Mix.env() not in [:dev, :test],
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      description: "A shortcut DSL for allow_nil? of attributes and relationships",
+      description: "Shortcut DSL for attributes and relationships in Ash resources.",
       package: package(),
       source_url: "https://github.com/devall-org/ash_req_opt",
       homepage_url: "https://github.com/devall-org/ash_req_opt",
